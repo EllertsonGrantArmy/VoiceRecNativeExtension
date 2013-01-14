@@ -1,0 +1,4 @@
+*.sdf
+bin-debug/
+Debug/
+Release/

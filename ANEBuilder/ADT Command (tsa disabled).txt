@@ -1,0 +1,1 @@
+adt -package -storetype pkcs12 -keystore simpleCertificate(abc).p12 -tsa none -target ane SpeechExtension.ane ANEDescription.xml -swc SpeechANEas.swc -platform Windows-x86 library.swf SpeechANE.dll

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					   xmlns:s="library://ns.adobe.com/flex/spark" 
+					   xmlns:mx="library://ns.adobe.com/flex/mx" initialize="initializeApp()" closing="finalizeApp()">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:Label id="lblTest" x="10" y="10" width="647" height="50" fontSize="20" text="Label"/>
+	
+	<fx:Script>
+		<![CDATA[
+			import com.bmcdo248.SpeechExtension.events.SpeechEvent;
+			import com.bmcdo248.SpeechExtension.speechDiplomat.SpeechDiplomat;
+			
+			private var speechDiplomat:SpeechDiplomat;
+			
+			public function initializeApp():void
+			{
+				speechDiplomat = new SpeechDiplomat();
+				
+				//lblTest.text = String(speechDiplomat.isSupported());
+				speechDiplomat.addEventListener(SpeechEvent.DATA, dataEventHandler);
+				lblTest.text = String(speechDiplomat.startSpeech());
+				
+			}
+			
+			public function dataEventHandler(e:SpeechEvent):void
+			{
+				lblTest.text = e.data;
+			}
+			
+			public function finalizeApp():void
+			{
+				speechDiplomat.dispose();
+			}
+		]]>
+	</fx:Script>
+</s:WindowedApplication>
